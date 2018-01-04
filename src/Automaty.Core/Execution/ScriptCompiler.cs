@@ -69,6 +69,7 @@
 		public Compilation Compile(string filePath)
 		{
 			Logger.WriteInfo("Resolving references.");
+			
 
 			MetadataReferenceResolver metadataReferenceResolver = ScriptOptions.Default.MetadataResolver;
 			IEnumerable<MetadataReference> references = ResolveReferences(metadataReferenceResolver);

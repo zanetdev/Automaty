@@ -27,6 +27,8 @@
 
 				c.OnExecute(() =>
 				{
+					
+					
 					if (!sourceFilePaths.Values.Any())
 					{
 						app.ShowHelp("run");

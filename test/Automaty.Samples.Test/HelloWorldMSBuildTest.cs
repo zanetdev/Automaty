@@ -37,7 +37,7 @@ namespace Automaty.Samples.Test
 			Assert.AreEqual($"// Hello World!", File.ReadAllText(Path.Combine(sampleProjectDirectoryPath, generatedFilePath1)));
 			Assert.AreEqual($"// Hello World!", File.ReadAllText(Path.Combine(sampleProjectDirectoryPath, generatedFilePath2)));
 
-			Assembly assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(Path.GetFullPath(Path.Combine(sampleProjectDirectoryPath, "bin\\Debug\\netstandard1.6\\Automaty.Samples.HelloWorld.MSBuild.dll".ToPlatformSpecificPath())));
+			Assembly assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(Path.GetFullPath(Path.Combine(sampleProjectDirectoryPath, "bin\\Debug\\netstandard2.0\\Automaty.Samples.HelloWorld.MSBuild.dll".ToPlatformSpecificPath())));
 			Assert.IsTrue(assembly.GetTypes().Any(x => x.Name == "GeneratedClassPartOfCompilation"));
 		}
 	}

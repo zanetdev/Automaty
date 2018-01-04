@@ -4,12 +4,13 @@
 	using System.Collections.Generic;
 	using System.IO;
 	using System.Linq;
+	using System.Reflection;
 	using Automaty.Common.Logging;
 	using Automaty.Core.Execution;
 	using Automaty.Core.Logging;
 	using Automaty.Core.Resolution;
 
-#if NETSTANDARD1_6
+#if NETSTANDARD2_0
 	using System.Runtime.Loader;
 #else
 	using System.Reflection;
@@ -34,6 +35,9 @@
 
 			try
 			{
+				logger.WriteDebug($"Starting Execution : "
+								+ $"Version = {typeof(AutomatyRunner).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version}");
+				
 				if (sourceFilePaths == null || !sourceFilePaths.Any())
 				{
 					logger.WriteWarning($"{nameof(sourceFilePaths)} is null or empty.");
@@ -55,7 +59,7 @@
 
 					runtimeLibraries = runtimeLibraryResolver.GetRuntimeLibraries(projectFilePath);
 
-#if NETSTANDARD1_6
+#if NETSTANDARD2_0
 					AssemblyLoadContext.Default.Resolving += (assemblyLoadContext, assemblyName) =>
 					{
 						RuntimeLibrary runtimeLibrary = runtimeLibraries.FirstOrDefault(x => x.AssemblyName == assemblyName.Name);

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
 	<PropertyGroup>
-		<Version>1.0.0-alpha2</Version>
+		<Version>1.0.4</Version>
 		<PackageId>Automaty.Common</PackageId>
 		<Description>The shared library for Automaty - a .NET Core based code automation tool for .NET Core projects.</Description>
 		<PackageTags>CodeGeneration CodeGen T4</PackageTags>
@@ -15,7 +15,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">netstandard1.3;net45</TargetFrameworks>
-		<TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3</TargetFrameworks>
+		<TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">netstandard2.0;net46</TargetFrameworks>
+		<TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0</TargetFrameworks>
 	</PropertyGroup>
 </Project>

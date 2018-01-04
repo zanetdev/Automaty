@@ -15,7 +15,7 @@
 	using Microsoft.CodeAnalysis;
 	using Microsoft.CodeAnalysis.Emit;
 
-#if NETSTANDARD1_6
+#if NETSTANDARD2_0
 	using System.Runtime.Loader;
 #endif
 
@@ -67,7 +67,7 @@
 
 					Logger.WriteDebug("Loading assembly.");
 
-#if NETSTANDARD1_6
+#if NETSTANDARD2_0
 					Assembly assembly = AssemblyLoadContext.Default.LoadFromStream(msLibrary, msSymbols);
 #else
 					Assembly assembly = Assembly.Load(msLibrary.ToArray(), msSymbols.ToArray());

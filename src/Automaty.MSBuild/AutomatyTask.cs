@@ -2,6 +2,7 @@
 {
 	using System.Diagnostics;
 	using System.Linq;
+	using System.Reflection;
 	using Microsoft.Build.Framework;
 	using Microsoft.Build.Utilities;
 
@@ -16,6 +17,9 @@
 
 		public override bool Execute()
 		{
+			Log.LogMessage($"Starting Execution : "
+				+ $"Version = {typeof(AutomatyTask).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version}");
+
 			// Can't use Automaty directly, see
 			// https://stackoverflow.com/questions/44434564/
 			// https://github.com/Microsoft/msbuild/issues/2195

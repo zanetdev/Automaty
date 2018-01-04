@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard1.6</TargetFramework>
+		<TargetFramework>netstandard2.0</TargetFramework>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Automaty.MSBuild" Version="1.0.0-*" />
-		<DotNetCliToolReference Include="Automaty.DotNetCli" Version="1.0.0-*" />
+		<PackageReference Include="Automaty.MSBuild" Version="1.0.4" />
+		<DotNetCliToolReference Include="Automaty.DotNetCli" Version="1.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>

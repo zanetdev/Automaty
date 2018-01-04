@@ -8,6 +8,8 @@
 	{
 		public static void AssertGeneratedFileDoesNotExist(string sampleProjectDirectoryPath, string generatedFilePath)
 		{
+			var f = Path.Combine(sampleProjectDirectoryPath, generatedFilePath);
+			
 			if (File.Exists(Path.Combine(sampleProjectDirectoryPath, generatedFilePath)))
 			{
 				throw new InvalidOperationException("Generated file already exist.");
