@@ -5,10 +5,12 @@
 	using System.IO;
 
 	public class Helper
-	{
+	{ 
 		public static void AssertGeneratedFileDoesNotExist(string sampleProjectDirectoryPath, string generatedFilePath)
 		{
 			var f = Path.Combine(sampleProjectDirectoryPath, generatedFilePath);
+			var d = Directory.GetCurrentDirectory();
+			//string s = File.ReadAllText(Path.Combine(sampleProjectDirectoryPath, generatedFilePath));
 			
 			if (File.Exists(Path.Combine(sampleProjectDirectoryPath, generatedFilePath)))
 			{
