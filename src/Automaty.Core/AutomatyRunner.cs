@@ -37,7 +37,7 @@
 			{
 				logger.WriteDebug($"Starting Execution : "
 								+ $"Version = {typeof(AutomatyRunner).GetTypeInfo().Assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version}");
-				
+
 				if (sourceFilePaths == null || !sourceFilePaths.Any())
 				{
 					logger.WriteWarning($"{nameof(sourceFilePaths)} is null or empty.");
@@ -58,6 +58,7 @@
 						new RuntimeLibraryResolver(LoggerFactory.CreateLogger<RuntimeLibraryResolver>());
 
 					runtimeLibraries = runtimeLibraryResolver.GetRuntimeLibraries(projectFilePath);
+					
 
 #if NETSTANDARD2_0
 					AssemblyLoadContext.Default.Resolving += (assemblyLoadContext, assemblyName) =>

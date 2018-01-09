@@ -8,6 +8,7 @@
 	using Automaty.Core.Logging;
 	using Microsoft.Build.Evaluation;
 	using NuGet.LibraryModel;
+	using NuGet.Packaging;
 	using NuGet.ProjectModel;
 
 	public class RuntimeLibraryResolver
@@ -133,9 +134,12 @@
 				Project referencedProject =
 					projectCollection.LoadProject(Path.Combine(Path.GetDirectoryName(projectFilePath), projectItem.EvaluatedInclude));
 
+				//runtimeLibraries.AddRange(GetProjectReferences(projectFilePath, projectCollection, referencedProject));
+
 				// TODO: Log?
 				if (referencedProject.GetProperty(PropertyNames.OutputType).EvaluatedValue != "Library")
 				{
+					Logger.WriteDebug($"Not adding project as it not a library : {referencedProject.FullPath}");
 					continue;
 				}
 

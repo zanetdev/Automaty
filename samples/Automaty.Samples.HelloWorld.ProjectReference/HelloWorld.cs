@@ -9,6 +9,7 @@
 		public void Execute(IScriptContext context)
 		{
 			context.Output["helloworld.txt"].WriteLine(typeof(Class).FullName);
+			context.Output["helloworld2.txt"].WriteLine(typeof(Class).FullName);
 		}
 	}
 }
