@@ -30,16 +30,26 @@
 
 			projectFilePath = Path.GetFullPath(projectFilePath.ToPlatformSpecificPath());
 
+			Logger.WriteDebug($"xxxxx1 1");
+
 			Environment.SetEnvironmentVariable(MSBuildFinder.MSBuildEnvironmentVariableName, MSBuildFinder.Find());
 
+			Logger.WriteDebug($"xxxxx1 2");
+
 			ProjectCollection projectCollection = new ProjectCollection();
+			Logger.WriteDebug($"xxxxx1 3");
+
 			Project project = projectCollection.LoadProject(projectFilePath);
+			Logger.WriteDebug($"xxxxx1 4");
 
 			List<RuntimeLibrary> runtimeLibraries = new List<RuntimeLibrary>();
 
-			runtimeLibraries.AddRange(GetProjectReferences(projectFilePath, projectCollection, project));
-			runtimeLibraries.AddRange(GetNugetReferences(projectFilePath, project));
+			Logger.WriteDebug($"xxxxx1 5");
 
+			runtimeLibraries.AddRange(GetProjectReferences(projectFilePath, projectCollection, project));
+			Logger.WriteDebug($"xxxxx1 6");
+			runtimeLibraries.AddRange(GetNugetReferences(projectFilePath, project));
+			Logger.WriteDebug($"xxxxx1 7");
 			return runtimeLibraries;
 		}
 
@@ -134,7 +144,9 @@
 				Project referencedProject =
 					projectCollection.LoadProject(Path.Combine(Path.GetDirectoryName(projectFilePath), projectItem.EvaluatedInclude));
 
-				//runtimeLibraries.AddRange(GetProjectReferences(projectFilePath, projectCollection, referencedProject));
+				var referencedProjectFilePath = Path.GetFullPath(referencedProject.FullPath.ToPlatformSpecificPath());
+
+				//runtimeLibraries.AddRange(GetProjectReferences(referencedProjectFilePath, projectCollection, referencedProject));
 
 				// TODO: Log?
 				if (referencedProject.GetProperty(PropertyNames.OutputType).EvaluatedValue != "Library")

@@ -32,9 +32,17 @@
 			Console.ForegroundColor = color;
 		}
 
-		public void WriteInfo(string text)
+		public void WriteInfo(string text, ConsoleColor consoleColor = ConsoleColor.Black, bool setConsoleColor = false)
 		{
+			ConsoleColor color = Console.ForegroundColor;
+
+			if (setConsoleColor)
+			{
+				Console.ForegroundColor = consoleColor;
+			}
+			
 			Console.WriteLine($"{typeof(T).Name}: {text}");
+			Console.ForegroundColor = color;
 		}
 
 		public void WriteWarning(string text)

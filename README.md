@@ -166,3 +166,4 @@ If you like the nested file structure used by `T4` templates, you could add some
     </Compile>
 </ItemGroup>
 ```
+

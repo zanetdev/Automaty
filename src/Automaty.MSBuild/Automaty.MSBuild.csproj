@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
 	<PropertyGroup>
-		<Version>1.0.5</Version>
+		<Version>1.0.19.0</Version>
 		<PackageId>Automaty.MSBuild</PackageId>
 		<Description>The MSBuild task for Automaty - a .NET Core based code automation tool for .NET Core projects.</Description>
 		<PackageTags>CodeGeneration MSBuild CodeGen T4</PackageTags>
@@ -16,9 +16,13 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">netstandard1.5;net46</TargetFrameworks>
-		<TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.5</TargetFrameworks>
+		<TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">netstandard2.0;net46</TargetFrameworks>
+		<TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0</TargetFrameworks>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.6.84" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<TargetFrameworksSplitted Include="$(TargetFrameworks.Split(';'))" />
@@ -36,9 +40,5 @@
 			</Content>
 		</ItemGroup>
 	</Target>
-
-	<ItemGroup>
-		<PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.5.180" />
-	</ItemGroup>
 
 </Project>
